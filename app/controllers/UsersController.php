@@ -31,15 +31,19 @@ class UsersController extends BaseController {
 		echo "user is $user";
 	}*/
 
+
 	public function getLogin()
 	{
 		return View::make('audiopedia.login');
 		
 	}
 
+
 	public function getLogout(){
 		Auth::logout();
 	}
+
+
 	public function postLogin(){
 		$credentials = array(
 			'username' => Input::get('username'),
@@ -53,28 +57,27 @@ class UsersController extends BaseController {
 		}
 	}
 	
+
 	public function postSignup()
 	{
 		$validate= Validator::make(Input::all(), User::$rules);
+		
 		if ($validate->passes()){
-		$user= new User;
-		$user->username= Input::get('username');
-		$user->email= Input::get('email');
-		$user->password= Hash::make(Input::get('password'));
-		$user->save();
-		return "tada";
-		}
-		else{
-		return Redirect::back()->withErrors($validate)->withInput();
+			$user= new User;
+			$user->username= Input::get('username');
+			$user->email= Input::get('email');
+			$user->password= Hash::make(Input::get('password'));
+			$user->save();
+			return "tada";
+		}else{
+			return Redirect::back()->withErrors($validate)->withInput();
 		}
 
 	}
 	public function getSignup()
 	{
 		return View::make('audiopedia.signup');
-		
-
-			}
+	}
 
 /*	public function  getView(){
 return View::make('user.view');	

@@ -39,36 +39,35 @@ class AnswerController extends \BaseController {
 	public function store()
 	{
 		$validate = Validator::make(Input::all(), Answer::$rules);
+		
 		if ($validate->passes())
 		{
-			
-		$audio = Input::file('audio');
-		$name = time() . "-" . $audio->getClientOriginalName();
-		$avatar = $audio->move("./answers/",$name);
+				
+			$audio = Input::file('audio');
+			$name = time() . "-" . $audio->getClientOriginalName();
+			$avatar = $audio->move("./answers/",$name);
 
-		$answer= new answer;
-		$answer->title=Input::get('title');
-		$answer->info=Input::get('info');
-		$answer->audio=$name;
-		if (Auth::check()){
-		$answer->user_id=Auth::id();
-		}else{
-			$answer->user_id=0;
-		}
-		$answer->save();
-		return Redirect::action('AnswerController@index');
-		$response = array(
-			'status' => 'success',
-			 'msg' => 'Setting created successfully',
-						 );
- return Response::json( $response );
+			$answer= new answer;
+			$answer->title=Input::get('title');
+			$answer->info=Input::get('info');
+			$answer->audio=$name;
+			if (Auth::check()){
+				$answer->user_id=Auth::id();
+			}else{
+				$answer->user_id=0;
+			}
+
+			$answer->save();
+			return Redirect::action('AnswerController@index');
+			$response = array(
+				'status' => 'success',
+				 'msg' => 'Setting created successfully',
+			);
+			return Response::json( $response );
 
 		}
 
 		return Redirect::back()->withErrors($validate)->withInput();
-
-
-
 	}
 
 	/**
