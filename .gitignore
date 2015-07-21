@@ -48,3 +48,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
