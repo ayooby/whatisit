@@ -50,7 +50,7 @@ class AdminController extends \BaseController {
 		$name = time() . "-" . $audio->getClientOriginalName();
 		$avatar = $audio->move("./answers/",$name);
 
-		$answer= new answer;
+		$answer= new Answer;
 		$answer->title=Input::get('title');
 		$answer->info=Input::get('info');
 		$answer->audio=$name;
@@ -61,13 +61,7 @@ class AdminController extends \BaseController {
 		}
 		$answer->save();
 		return Redirect::route('answer.admin..index');
-		$response = array(
-			'status' => 'success',
-			 'msg' => 'Setting created successfully',
-						 );
- return Response::json( $response );
 
-		}
 
 		return Redirect::back()->withErrors($validate)->withInput();
 
