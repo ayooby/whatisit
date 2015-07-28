@@ -17,9 +17,9 @@
 // });
 
 
-Route::resource('/admin', 'AdminController' );
+Route::resource('/', 'AnswerController' , array('as' => 'answer') );
 
-Route::resource('/audiopedia', 'AnswerController' , array('as' => 'answer') );
+Route::resource('/admin', 'AdminController' );
 
 Route::controller('/search', 'SearchController', 'search');
 
