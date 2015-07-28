@@ -49,29 +49,20 @@ class AdminController extends \BaseController {
 			$audio = Input::file('audio');
 			$name = time() . "-" . $audio->getClientOriginalName();
 			$avatar = $audio->move("./answers/",$name);
-			$answer= new answer;
+			
+			$answer = new Answer;
 			$answer->title=Input::get('title');
 			$answer->info=Input::get('info');
 			$answer->audio=$name;
+			
 			if (Auth::check()){
 				$answer->user_id=Auth::id();
 			}else{
 				$answer->user_id=0;
 			}
 			$answer->save();
-			return Redirect::route('answer.admin..index');
-			$response = array(
-				'status' => 'success',
-				 'msg' => 'Setting created successfully',
-			);
- 			return Response::json( $response );
-
-		}
-
-		return Redirect::back()->withErrors($validate)->withInput();
-
-
-
+			
+			return Redirect::route('answer.admin.index');
 	}
 
 	/**
