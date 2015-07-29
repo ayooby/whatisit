@@ -25,3 +25,9 @@ Route::controller('/search', 'SearchController', 'search');
 
 Route::controller('/user' , 'UsersController' );
 
+Route::get('/cal', function(){
+$custom = new MP3("./1.mp3");
+$duration2 = $custom->getDuration();
+return "$duration2";
+});
+

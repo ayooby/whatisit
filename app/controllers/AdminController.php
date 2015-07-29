@@ -61,7 +61,9 @@ class AdminController extends \BaseController {
 		}
 		$answer->save();
 		return Redirect::route('answer.admin..index');
+	
 
+		}
 
 		return Redirect::back()->withErrors($validate)->withInput();
 

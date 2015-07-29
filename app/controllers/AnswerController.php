@@ -38,7 +38,12 @@ class AnswerController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validate = Validator::make(Input::all(), Answer::$rules);
+		$file = Input::get('audio');
+		// $mp3file = new MP3(file);
+		// $duration = $mp3file->getDuration();
+		return "$file";
+
+		/*$validate = Validator::make(Input::all(), Answer::$rules);
 		if ($validate->passes())
 		{
 			
@@ -57,17 +62,13 @@ class AnswerController extends \BaseController {
 		}
 		$answer->save();
 		return Redirect::action('AnswerController@index');
-		$response = array(
-			'status' => 'success',
-			 'msg' => 'Setting created successfully',
-						 );
- return Response::json( $response );
+		
 
 		}
 
 		return Redirect::back()->withErrors($validate)->withInput();
 
-
+*/
 
 	}
 

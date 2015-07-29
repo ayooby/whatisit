@@ -1,6 +1,10 @@
 <?php
-class MP3File extends \BaseController
-{
+
+namespace app\lib;
+
+class MP3{
+
+
 
     protected $filename;
     public function __construct($filename)
@@ -171,4 +175,4 @@ class MP3File extends \BaseController
             return intval(((144 * $bitrate*1000)/$sample_rate) + $padding_bit);
     }
 }
-}
+

@@ -49,3 +49,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 vendor/
+public/1.mp3
