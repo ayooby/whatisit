@@ -49,4 +49,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 vendor/
-public/1.mp3
+
+#Media Files
+*.mp3
+*.ogg
+*.mp4
