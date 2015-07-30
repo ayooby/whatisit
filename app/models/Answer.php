@@ -5,7 +5,7 @@ class Answer extends \Eloquent {
 	// Add your validation rules here
 	public static $rules = [
 		 'title' => 'required|between:3,60|unique:answers,title',
-		 'audio' => 'required|mimes:mpga,aac,ogg,mp3',
+		 'audio' => 'required|mimes:mpga,aac,ogg',
 		 'info' => 'required|max:100'
 		
 	];
