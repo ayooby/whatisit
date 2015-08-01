@@ -29,10 +29,22 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 */
 		public static $rules = [
-			'username' => 'required|unique:users,username|min:5',
-			'email' => 'required|email|unique:users,email',
-			'password' => 'required|min:4',
+			'username'		 => 'required|unique:users,username|min:5',
+			'email' 		 => 'required|email|unique:users,email',
+			'password' 		 => 'required|min:4',
 			'password-again' => 'same:password'
 
 		];
+
+
+		//define relationship with question model
+		public function Question()
+		{
+			return $this->hasMany('Question');
+		}
+
+		public function Answer()
+		{
+			return $this->hasMany('Answer');
+		}
 }

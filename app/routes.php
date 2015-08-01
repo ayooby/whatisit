@@ -25,3 +25,4 @@ Route::controller('/search', 'SearchController', 'search');
 
 Route::controller('/user' , 'UsersController' );
 
+Route::resource('/ask', 'QuestionController' , array('as' => 'question') );
