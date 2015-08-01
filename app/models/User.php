@@ -38,12 +38,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
 		//define relationship with question model
-		public function Question()
+		public function questions()
 		{
 			return $this->hasMany('Question');
 		}
 
-		public function Answer()
+		public function answers()
 		{
 			return $this->hasMany('Answer');
 		}

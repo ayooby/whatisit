@@ -13,7 +13,7 @@ class Tag extends \Eloquent {
 	// Don't forget to fill this array
 	// protected $fillable = ['title','body' , 'tagmap_id'];
 
-	public function Tagmap(){
+	public function tagmaps(){
 		return $this->hasMany('Tagmap');
 	}
 

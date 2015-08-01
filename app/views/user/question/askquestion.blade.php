@@ -18,9 +18,9 @@
 {{Form::label('info', 'Body:')}}
 {{Form::textarea('Body' , '' , array('class' => 'form-control' ,'id' => 'info'))}}
 </p>
-{{ Form::label('audio', 'Tags') }} 
-{{Form::text('tag:','' , array('class' => 'form-control' , 'id' => 'title'))}}
-
+{{ Form::label('tag', 'Tags:') }} <br>
+<small class="text-muted">Seperate By Commas</small>
+{{Form::text('tag','' , array('class' => 'form-control' , 'id' => 'title'))}}
 <br>
 {{Form::submit('Ask Your Question' , array('class' => 'btn btn-lg btn-info btn-block'))}}
 {{Form::reset('Reset!' , array('class' => 'btn btn-md btn-danger btn-block'))}}

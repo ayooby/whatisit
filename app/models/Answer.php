@@ -13,9 +13,9 @@ class Answer extends \Eloquent {
 	// Don't forget to fill this array
 	protected $fillable = ['title','audio'];
 
-	public function Question()
+	public function question()
 	{
-		return $this->belongsTo('Answer');
+		return $this->belongsTo('Question');
 	}
 
 }

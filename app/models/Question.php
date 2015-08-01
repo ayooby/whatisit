@@ -13,7 +13,7 @@ class Question extends \Eloquent {
 	// Don't forget to fill this array
 	// protected $fillable = ['title','body' , 'tagmap_id'];
 
-	public function Answer(){
+	public function answers(){
 		return $this->hasMany('Answer');
 	}
 
