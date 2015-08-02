@@ -16,7 +16,7 @@
 </p>
 <p>
 {{Form::label('info', 'Body:')}}
-{{Form::textarea('Body' , '' , array('class' => 'form-control' ,'id' => 'info'))}}
+{{Form::textarea('body' , '' , array('class' => 'form-control' ,'id' => 'info'))}}
 </p>
 {{ Form::label('tag', 'Tags:') }} <br>
 <small class="text-muted">Seperate By Commas</small>

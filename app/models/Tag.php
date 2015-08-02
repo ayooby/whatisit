@@ -11,7 +11,9 @@ class Tag extends \Eloquent {
 	];*/
 
 	// Don't forget to fill this array
-	// protected $fillable = ['title','body' , 'tagmap_id'];
+	protected $fillable = ['title'];
+
+    public $timestamps = false;
 
 	public function tagmaps(){
 		return $this->hasMany('Tagmap');

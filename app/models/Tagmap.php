@@ -16,6 +16,8 @@ class Tagmap extends \Eloquent {
 	// Don't forget to fill this array
 	// protected $fillable = ['title','body' , 'tagmap_id'];
 
+	public $timestamps = false;
+
 	public function questions()
 	{
 		return $this->hasMany('Question');
