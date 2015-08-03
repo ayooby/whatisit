@@ -19,7 +19,6 @@ class CreateUserTable extends Migration {
 			$table->string('username');
 			$table->string('email');
 			$table->string('password', 60);
-			$table->integer('answer_id')->references('id')->on('answers');
             $table->string('remember_token', 100)->nullable();
 			$table->timestamps();
 		});
