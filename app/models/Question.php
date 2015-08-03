@@ -22,9 +22,15 @@ class Question extends \Eloquent {
 	{
 		return $this->belongsTo('User');
 	}
+
 	public function tagmap()
 	{
 		return $this->hasMany('Tagmap');
 	}
 
+	#http://laravel.com/docs/4.2/eloquent#working-with-pivot-tables
+	public function tags()
+	{
+		return $this->belongsToMany('Tag', 'Tagmap', 'question_id', 'tag_id');
+	}
 }
