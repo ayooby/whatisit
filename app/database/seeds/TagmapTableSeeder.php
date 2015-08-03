@@ -1,12 +1,9 @@
-
 <?php
-/*
-
 
 // Composer: "fzaninotto/faker": "v1.3.0"
 use Faker\Factory as Faker;
 
-class QuestionTableSeeder extends Seeder {
+class TagmapTableSeeder extends Seeder {
 
 	public function run()
 	{
@@ -14,12 +11,11 @@ class QuestionTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
-			Question::create([
-				'title' => $faker->sentence(),
-				'body' => $faker-> realText(1000),
-				'user_id' => rand(1,5)	
+			Tagmap::create([
+				'question_id' => rand(1,10),
+				'tag_id' => rand(1,10)	
 			]);
 		}
 	}
 
-}*/
+}

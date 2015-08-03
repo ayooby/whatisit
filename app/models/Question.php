@@ -11,7 +11,7 @@ class Question extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	// protected $fillable = ['title','body' , 'tagmap_id'];
+	protected $fillable = ['title','body'];
 
 	public function answers()
 	{

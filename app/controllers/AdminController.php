@@ -15,14 +15,14 @@ class AdminController extends \BaseController {
 	{
 		$answers = Answer::all();
 
-		return View::make('admin.index', compact('answers'));
+		// return View::make('admin.index', compact('answers'));
 	}
 
 	public function index()
 	{
 		$answers = Answer::all();
 
-		return View::make('admin.index', compact('answers'));
+		// return View::make('admin.index', compact('answers'));
 	}
 
 	/**

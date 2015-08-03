@@ -1,7 +1,4 @@
-
 <?php
-/*
-
 
 // Composer: "fzaninotto/faker": "v1.3.0"
 use Faker\Factory as Faker;
@@ -15,11 +12,11 @@ class QuestionTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			Question::create([
-				'title' => $faker->sentence(),
-				'body' => $faker-> realText(1000),
+				'title' => $faker->sentence(25),
+				'body' => $faker-> realText(100),
 				'user_id' => rand(1,5)	
 			]);
 		}
 	}
 
-}*/
+}

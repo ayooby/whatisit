@@ -50,7 +50,7 @@ class UsersController extends BaseController {
 			'password' => Input::get('password')
 		 );
 		if (Auth::attempt($credentials)){
-			return "user is ok";
+			return Redirect::action('QuestionController@index');
 		}
 		else{
 		return Redirect::back()->with('message' , 'Email Or Password was incorrect!');
@@ -68,7 +68,7 @@ class UsersController extends BaseController {
 			$user->email= Input::get('email');
 			$user->password= Hash::make(Input::get('password'));
 			$user->save();
-			return "tada";
+			return Redirect::action('QuestionController@index');
 		}else{
 			return Redirect::back()->withErrors($validate)->withInput();
 		}

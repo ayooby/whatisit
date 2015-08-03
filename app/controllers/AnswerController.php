@@ -11,14 +11,14 @@ class AnswerController extends \BaseController {
 	{
 		$answers = Answer::all();
 
-		return View::make('audiopedia.index', compact('answers'));
+		// return View::make('audiopedia.index', compact('answers'));
 	}
 
 	public function index()
 	{
 		$answers = Answer::all();
 
-		return View::make('audiopedia.index', compact('answers'));
+		// return View::make('audiopedia.index', compact('answers'));
 	}
 
 	/**

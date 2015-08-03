@@ -9,16 +9,16 @@ class QuestionController extends \BaseController {
 	 */
 	public function show()
 	{
-		$answers = Question::all();
+		$questions = Question::all();
 
-		return View::make('audiopedia.index', compact('question'));
+		return View::make('ask.index')->with(['questions' => $questions]);
 	}
 
 	public function index()
 	{
-		$answers = Question::all();
+		$questions = Question::all();
 
-		return View::make('audiopedia.index', compact('question'));
+		return View::make('ask.index')->with(['questions' => $questions]);;
 	}
 
 	/**
@@ -28,7 +28,7 @@ class QuestionController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('user.question.askquestion');
+		return View::make('ask.askquestion');
 	}
 
 	/**
@@ -58,22 +58,20 @@ class QuestionController extends \BaseController {
 			$question = new Question;
 			$question->title 	= Input::get('title');
 			$question->body   	= Input::get('body');
-			$question->user_id	=Auth::id();
-			$question_id = $question->id;
+			$question->user_id	= Auth::id();
+			$question->save();
+			$question_id 		= $question->id;
+
 			//preparing for Tagmap
 			foreach ($tags_id as $id) 
 			{
 				$tagmap = new Tagmap;
 				$tagmap->tag_id 	 = $id;
-				$tagmap->question_id = $question_id;;
+				$tagmap->question_id = $question_id;
 				$tagmap->save();
-				$tagmap_id 			 = $tagmap->id;
 			}
-			$question->tagmap_id = $tagmap_id;
-			$question->save();
 
-			return "savlek";
-			// return Redirect::action('AnswerController@index');
+			return Redirect::action('QuestionController@index');
 		}
 
 		return Redirect::back()->withErrors($validate)->withInput();

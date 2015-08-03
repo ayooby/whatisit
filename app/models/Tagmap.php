@@ -14,7 +14,7 @@ class Tagmap extends \Eloquent {
 	protected $table = 'tagmap';
 
 	// Don't forget to fill this array
-	// protected $fillable = ['title','body' , 'tagmap_id'];
+	protected $fillable = ['question_id', 'tag_id'];
 
 	public $timestamps = false;
 

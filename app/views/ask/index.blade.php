@@ -20,18 +20,32 @@ Send File by a Guest
 	{{Form::submit('Search')}}
 	{{Form::close()}}
 
-	{{--Show search--}}
-	<div id='output' class='search-result' >ssss   </div>
-	{{--end show search--}}
+	
 
 	{{-- Show  Answers --}}
 <div class='col-md-offset-2 col-md-6 row' id='latest'>
-	<ul class=''>
-		@foreach($answers as $answer)
-		<li class='list-group-item'><b>{{{$answer->title}}} </b><br><audio controls=""  name="media"><source src="./answers/{{$answer->audio}}"></audio>  </li>
-		<li class ='list-group-item'> {{$answer->info}} </li>
+	<div class="list-group">
+		@foreach($questions as $question)
+			<a href="#" class="list-group-item active">
+				{{$question->title}}
+    		</a>
+    		<a href="#" class="list-group-item">
+				{{$question->body}}
+    		</a>
+
+			<div class="list-group-item">
+		
+			
+				@foreach ($question->tags as $tag)
+				<a href="#">{{{$tag->title}}}</a> 
+				@endforeach
+			
+			</div>
+			
 		@endforeach
-	</ul>
-</div>
+	</div>
+	</div>
+    			
+	
 
 {{-- End of Answers --}}
