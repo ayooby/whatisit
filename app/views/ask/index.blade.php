@@ -26,9 +26,10 @@ Send File by a Guest
 <div class='col-md-offset-2 col-md-6 row' id='latest'>
 	<div class="list-group">
 		@foreach($questions as $question)
-			<a href="#" class="list-group-item active">
-				{{$question->title}}
-    		</a>
+
+							
+	{{(link_to_action('AnswerController@getAnswer' , $question->title , array($question->id) , array('class' => 'list-group-item active')))}}
+
     		<a href="#" class="list-group-item">
 				{{$question->body}}
     		</a>

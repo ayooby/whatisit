@@ -13,7 +13,8 @@
 
 
 
-Route::resource('/', 'AnswerController' , array('as' => 'answer') ); //just for display questions in index
+Route::get('/answer/{id}', ['uses' => 'AnswerController@getAnswer'] ); //for display answer one question
+Route::post('/answer/{question_id}', ['uses' => 'AnswerController@postAnswer'] ); //send question_id to controller and save in SQL
 
 Route::resource('/ask', 'QuestionController' , array('as' => 'question') );
 
@@ -22,5 +23,6 @@ Route::resource('/admin', 'AdminController' );
 Route::controller('/search', 'SearchController', 'search');
 
 Route::controller('/user' , 'UsersController' );
+
 
 

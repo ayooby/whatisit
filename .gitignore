@@ -53,3 +53,4 @@ $RECYCLE.BIN/
 /vendor
 composer.phar
 composer.lock
+*.mp3

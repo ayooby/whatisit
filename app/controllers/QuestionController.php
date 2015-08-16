@@ -42,17 +42,6 @@ class QuestionController extends \BaseController {
 		
 		if ($validate->passes())
 		{	
-			//saving Tags in Tag Table 
-
-			$tags_array =  explode(",", Input::get('tag'));
-			$tags_id = array(); 
-			foreach ($tags_array as $tag) 
-			{
-				$createTag = Tag::firstOrCreate(array('title' => $tag)); //check for existing if not create a new Row
-				$tags_id[] = $createTag->id; //return ids for saving in Tagmap table
-			}
-			// end of Tag saving
-
 			//save a new Question
 
 			$question = new Question;
@@ -61,15 +50,23 @@ class QuestionController extends \BaseController {
 			$question->user_id	= Auth::id();
 			$question->save();
 			$question_id 		= $question->id;
+			//saving Tags in Tag Table 
 
-			//preparing for Tagmap
-			foreach ($tags_id as $id) 
-			{
-				$tagmap = new Tagmap;
-				$tagmap->tag_id 	 = $id;
-				$tagmap->question_id = $question_id;
-				$tagmap->save();
+				/*	convert input to array 	*/
+				$tags_arr = explode(',', Input::get('tag'));
+				
+				/*	
+				save in Tag table and return object for saving in 
+				Tagmap table
+				*/
+				foreach ($tags_arr as $tag_str) {
+				$tag_obj = Tag::firstOrCreate(array('title' => $tag_str));
+
+				//this line will attach a tag ( insert and save automatically )
+				$new_question->tags()->attach($tag_obj->id);
 			}
+
+			
 
 			return Redirect::action('QuestionController@index');
 		}
