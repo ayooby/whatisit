@@ -7,6 +7,8 @@
 
 <title>Welcome to WhatIsIt Or WII</title>
 
+{{-- List all of the Questions --}}
+
 @if (Auth::check())
 Welcome {{{Auth::user()->username}}}
 @else
@@ -23,30 +25,39 @@ Send File by a Guest
 	
 
 	{{-- Show  Answers --}}
-<div class='col-md-offset-2 col-md-6 row' id='latest'>
-	<div class="list-group">
-		@foreach($questions as $question)
+	<div class='col-md-offset-2 col-md-6 row' id='latest'>
+		<div class="list-group">
+			@foreach($questions as $question)
 
-							
-	{{(link_to_action('AnswerController@getAnswer' , $question->title , array($question->id) , array('class' => 'list-group-item active')))}}
 
-    		<a href="#" class="list-group-item">
+			{{(link_to_action('AnswerController@getAnswer' , $question->title , $question->id, array('class' => 'list-group-item active')))}}
+
+			<a href="#" class="list-group-item">
 				{{$question->body}}
-    		</a>
-
+			</a>
+			{{-- Display Tags --}}
 			<div class="list-group-item">
-		
-			
+				{{-- Like Dislike --}}
 				@foreach ($question->tags as $tag)
-				<a href="#">{{{$tag->title}}}</a> 
+				<a href="#" class="btn btn-info btn-xs">{{{$tag->title}}}</a> 
 				@endforeach
-			
+				<div class="col-md-2">
+					<a href="{{action('RatesController@getRate', array($question->id,'1'))}}">
+						<button type="button" class="btn btn-primary btn-sm">		
+			<span class="glyphicon glyphicon-thumbs-up"></span>
+						</button>
+							</a>
+					<a href="{{action('RatesController@getRate', array($question->id,'%2D1'))}}">
+						<button type="button" class="btn btn-default btn-sm">		
+			<span class="glyphicon glyphicon-thumbs-down"></span>
+						</button>
+							</a>
+				</div>
 			</div>
-			
-		@endforeach
+			@endforeach
+		</div>
 	</div>
-	</div>
-    			
+
 	
 
-{{-- End of Answers --}}
+	{{-- End of Answers --}}
