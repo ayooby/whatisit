@@ -14,6 +14,7 @@
 
 
 Route::get('/answer/{id}', ['uses' => 'AnswerController@getAnswer'] ); //for display answer one question
+
 Route::post('/answer/{question_id}', ['uses' => 'AnswerController@postAnswer'] ); //send question_id to controller and save in SQL
 
 Route::get('/rate/{question_id}/{user_rate}', ['uses' => 'RatesController@getRate'])->where('user_rate' , '[\-1]+'); //accept only 1 and -1 for route
@@ -29,6 +30,8 @@ Route::controller('/user' , 'UsersController' );
 Route::get('/test/', function(){
 	phpinfo();
 });
+
+
 
 
 

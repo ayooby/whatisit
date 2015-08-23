@@ -47,7 +47,10 @@ Send File by a Guest
 			<span class="glyphicon glyphicon-thumbs-up"></span>
 						</button>
 							</a>
+
 					<a href="{{action('RatesController@getRate', array($question->id,'-1'))}}">
+
+
 						<button type="button" class="btn btn-default btn-sm">		
 			<span class="glyphicon glyphicon-thumbs-down"></span>
 						</button>
