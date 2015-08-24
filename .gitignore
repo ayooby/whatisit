@@ -48,9 +48,18 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+<<<<<<< HEAD
 
 /bootstrap/compiled.php
 /vendor
 composer.phar
 composer.lock
 *.mp3
+=======
+vendor/
+
+#Media Files
+*.mp3
+*.ogg
+*.mp4
+>>>>>>> origin/durator

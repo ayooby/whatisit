@@ -40,6 +40,7 @@ class AnswerController extends \BaseController {
 	{	
 
 		$validate = Validator::make(Input::all(), Answer::$rules);
+<<<<<<< HEAD
 		
 		if ($validate->passes())
 		{
@@ -62,6 +63,51 @@ class AnswerController extends \BaseController {
 			return Redirect::action('QuestionController@index');
 		}
 
+=======
+
+		if ($validate->passes()){
+
+			//get file from input
+			$audio = Input::file('audio');
+
+			//get file's temporary path in server
+			$file_temporary_path = $audio->getPathname();
+
+			//create MP3 Object
+			$audio_file = new MP3( $file_temporary_path );
+
+			$duration = $audio_file->getDuration();
+
+			#Do same thing in 1 line:
+			#$duration = with(new MP3($audio->getPathname()))->getDuration();
+
+			//check if audio is less than/equal to 120 Seconds, then save it!
+			if ($duration <= 120){ //seconds
+
+				$name = time() . '-' . $audio->getClientOriginalName();
+				
+				//Move file from temporary folder to PUBLIC folder.
+				//PUBLIC folder because we want user have access to this file later.
+				$avatar = $audio->move( public_path() . '/answers/', $name);
+
+				$answer= new Answer;
+				$answer->title=Input::get('title');
+				$answer->info=Input::get('info');
+				$answer->audio = $name;
+		
+				if (Auth::check()){
+					$answer->user_id=Auth::id();
+				}else{
+					$answer->user_id=0;
+				}
+		
+				$answer->save();
+			}
+
+			return Redirect::action('AnswerController@index');
+		}
+
+>>>>>>> origin/durator
 		return Redirect::back()->withErrors($validate)->withInput();
 	}
 

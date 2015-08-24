@@ -50,6 +50,7 @@ class AdminController extends \BaseController {
 			$name = time() . "-" . $audio->getClientOriginalName();
 			$avatar = $audio->move("./answers/",$name);
 			
+<<<<<<< HEAD
 			$answer = new Answer;
 			$answer->title=Input::get('title');
 			$answer->info=Input::get('info');
@@ -63,6 +64,31 @@ class AdminController extends \BaseController {
 			$answer->save();
 			
 			return Redirect::route('answer.admin.index');
+=======
+		$audio = Input::file('audio');
+		$name = time() . "-" . $audio->getClientOriginalName();
+		$avatar = $audio->move("./answers/",$name);
+
+		$answer= new Answer;
+		$answer->title=Input::get('title');
+		$answer->info=Input::get('info');
+		$answer->audio=$name;
+		if (Auth::check()){
+		$answer->user_id=Auth::id();
+		}else{
+			$answer->user_id=0;
+		}
+		$answer->save();
+		return Redirect::route('answer.admin..index');
+	
+
+		}
+
+		return Redirect::back()->withErrors($validate)->withInput();
+
+
+
+>>>>>>> origin/durator
 	}
 
 	/**
