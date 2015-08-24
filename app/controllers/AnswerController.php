@@ -40,30 +40,7 @@ class AnswerController extends \BaseController {
 	{	
 
 		$validate = Validator::make(Input::all(), Answer::$rules);
-<<<<<<< HEAD
-		
-		if ($validate->passes())
-		{
-				
-			$audio 					= 	Input::file('audio');
-			$name 					= 	time() . "-" . $audio->getClientOriginalName();
-			$avatar 				= 	$audio->move("./answers/",$name);
 
-			$answer 				= 	new answer;
-			$answer->title 			=	Input::get('title');
-			$answer->info 			=	Input::get('info');
-			$answer->audio=$name;
-			if (Auth::check()){
-				$answer->user_id	=	Auth::id();
-			}else{
-				$answer->user_id	=	0;
-			}
-			$answer->question_id 	= $question_id;
-			$answer->save();
-			return Redirect::action('QuestionController@index');
-		}
-
-=======
 
 		if ($validate->passes()){
 
@@ -107,7 +84,7 @@ class AnswerController extends \BaseController {
 			return Redirect::action('AnswerController@index');
 		}
 
->>>>>>> origin/durator
+
 		return Redirect::back()->withErrors($validate)->withInput();
 	}
 

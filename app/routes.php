@@ -27,12 +27,8 @@ Route::controller('/search', 'SearchController', 'search');
 
 Route::controller('/user' , 'UsersController' );
 
-<<<<<<< HEAD
 Route::get('/test/', function(){
 	phpinfo();
 });
-
-
-
 
 
