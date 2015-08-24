@@ -16,7 +16,7 @@ class CreateRatesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id')->references('id')->on('users');
-			$table->integer('question_id')->references('id')->on('questions');
+			$table->integer('answer_id')->references('id')->on('answer');
 			$table->integer('user_rate');
 		});
 	}
