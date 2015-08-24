@@ -44,17 +44,15 @@ Send File by a Guest
 				<div class="col-md-2">
 					<a href="{{action('RatesController@getRate', array($question->id,'1'))}}">
 						<button type="button" class="btn btn-primary btn-sm">		
-			<span class="glyphicon glyphicon-thumbs-up"></span>
+							<span class="glyphicon glyphicon-thumbs-up"></span>
 						</button>
-							</a>
-
+					</a>
+					<span class="badge"></span>
 					<a href="{{action('RatesController@getRate', array($question->id,'-1'))}}">
-
-
 						<button type="button" class="btn btn-default btn-sm">		
-			<span class="glyphicon glyphicon-thumbs-down"></span>
+							<span class="glyphicon glyphicon-thumbs-down"></span>
 						</button>
-							</a>
+					</a>
 				</div>
 			</div>
 			@endforeach
